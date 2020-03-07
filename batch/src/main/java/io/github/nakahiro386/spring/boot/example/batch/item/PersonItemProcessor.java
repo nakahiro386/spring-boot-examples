@@ -1,10 +1,8 @@
-/**
- *
- */
-package io.github.nakahiro386.spring.boot.example.batch;
+package io.github.nakahiro386.spring.boot.example.batch.item;
 
 import org.springframework.batch.item.ItemProcessor;
 
+import io.github.nakahiro386.spring.boot.example.batch.dto.Person;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

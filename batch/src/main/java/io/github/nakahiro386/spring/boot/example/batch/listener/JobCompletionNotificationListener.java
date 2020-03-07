@@ -1,4 +1,4 @@
-package io.github.nakahiro386.spring.boot.example.batch;
+package io.github.nakahiro386.spring.boot.example.batch.listener;
 
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
@@ -6,6 +6,7 @@ import org.springframework.batch.core.listener.JobExecutionListenerSupport;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import io.github.nakahiro386.spring.boot.example.batch.dto.Person;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

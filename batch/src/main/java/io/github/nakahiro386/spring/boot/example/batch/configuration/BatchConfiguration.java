@@ -1,4 +1,4 @@
-package io.github.nakahiro386.spring.boot.example.batch;
+package io.github.nakahiro386.spring.boot.example.batch.configuration;
 
 import javax.sql.DataSource;
 
@@ -18,6 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+
+import io.github.nakahiro386.spring.boot.example.batch.dto.Person;
+import io.github.nakahiro386.spring.boot.example.batch.item.PersonItemProcessor;
+import io.github.nakahiro386.spring.boot.example.batch.listener.JobCompletionNotificationListener;
 
 @Configuration
 @EnableBatchProcessing
