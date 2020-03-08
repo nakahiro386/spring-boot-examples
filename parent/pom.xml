@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.5.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+  <groupId>io.github.nakahiro386.spring.boot.example</groupId>
+  <artifactId>parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>parent</name>
+  <packaging>pom</packaging>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <base.encoding>UTF-8</base.encoding>
+    <project.build.sourceEncoding>${base.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${base.encoding}</project.reporting.outputEncoding>
+
+    <locales>ja</locales>
+
+    <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+    </dependencies>
+  </dependencyManagement>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>${maven-project-info-reports-plugin.version}</version>
+          <configuration>
+            <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+            <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+            <skipEmptyReport>true</skipEmptyReport>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>normal</id>
+            <reports>
+              <report>index</report>
+              <report>summary</report>
+              <report>dependency-info</report>
+              <report>dependencies</report>
+              <report>dependency-convergence</report>
+              <report>plugins</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>management</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>modules</report>
+              <report>dependency-management</report>
+              <report>plugin-management</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <modules>
+    <module>../web</module>
+    <module>../batch</module>
+  </modules>
+
+</project>
