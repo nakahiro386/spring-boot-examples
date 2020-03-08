@@ -14,7 +14,6 @@ import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilde
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -22,15 +21,15 @@ import org.springframework.core.io.ClassPathResource;
 import io.github.nakahiro386.spring.boot.example.batch.dto.Person;
 import io.github.nakahiro386.spring.boot.example.batch.item.PersonItemProcessor;
 import io.github.nakahiro386.spring.boot.example.batch.listener.JobCompletionNotificationListener;
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableBatchProcessing
+@RequiredArgsConstructor
 public class BatchConfiguration {
 
-    @Autowired
-    private JobBuilderFactory jobBuilderFactory;
-    @Autowired
-    private StepBuilderFactory stepBuilderFactory;
+    private final JobBuilderFactory jobBuilderFactory;
+    private final StepBuilderFactory stepBuilderFactory;
 
     @Bean
     public FlatFileItemReader<Person> reader() {
