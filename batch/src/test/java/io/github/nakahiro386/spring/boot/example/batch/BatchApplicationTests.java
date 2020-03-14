@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
+// @ContextConfiguration(classes = BatchApplication.class, initializers = ConfigFileApplicationContextInitializer.class)
 class BatchApplicationTests {
 
     @Test
