@@ -1,9 +1,9 @@
 package io.github.nakahiro386.spring.boot.example.domain;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 
-@SpringBootTest
+@MybatisTest
 class MybatisDemoApplicationTest {
 
     @Test
