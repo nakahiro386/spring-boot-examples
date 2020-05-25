@@ -4,7 +4,7 @@ import java.util.Date;
 
 public interface AuditingProvider {
 
-    String getCurrentAuditor();
+  String getCurrentAuditor();
 
-    Date getCurrentTimeStamp();
+  Date getCurrentTimeStamp();
 }

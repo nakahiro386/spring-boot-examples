@@ -33,6 +33,8 @@
     <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
     <checkstyle.config.location>google_checks.xml</checkstyle.config.location>
     <checkstyle.enable.rss>false</checkstyle.enable.rss>
+    <checkstyle.excludes>**/entity/**/*,**/sqlmap/**/*</checkstyle.excludes>
+    <checkstyleVersion>8.32</checkstyleVersion>
 
     <maven-surefire-report-plugin.version>3.0.0-M4</maven-surefire-report-plugin.version>
 
@@ -74,6 +76,19 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
           <version>${maven-checkstyle-plugin.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>${checkstyleVersion}</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>com.sun</groupId>
+                  <artifactId>tools</artifactId>
+                </exclusion>
+              </exclusions>
+            </dependency>
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

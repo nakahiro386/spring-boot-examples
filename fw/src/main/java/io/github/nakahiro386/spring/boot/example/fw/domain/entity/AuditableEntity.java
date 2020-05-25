@@ -5,28 +5,28 @@ import java.util.Date;
 
 public interface AuditableEntity extends Serializable {
 
-    Long getId();
+  Long getId();
 
-    void setId(Long id);
+  void setId(Long id);
 
-    int getVersion();
+  int getVersion();
 
-    void setVersion(int version);
+  void setVersion(int version);
 
-    String getCreatedBy();
+  String getCreatedBy();
 
-    void setCreatedBy(String createdBy);
+  void setCreatedBy(String createdBy);
 
-    Date getCreatedDate();
+  Date getCreatedDate();
 
-    void setCreatedDate(Date createdDate);
+  void setCreatedDate(Date createdDate);
 
-    String getLastModifiedBy();
+  String getLastModifiedBy();
 
-    void setLastModifiedBy(String lastModifiedBy);
+  void setLastModifiedBy(String lastModifiedBy);
 
-    Date getLastModifiedDate();
+  Date getLastModifiedDate();
 
-    void setLastModifiedDate(Date lastModifiedDate);
+  void setLastModifiedDate(Date lastModifiedDate);
 
 }

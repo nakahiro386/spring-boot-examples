@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Greeting {
-    private Long id;
-    private String content;
+  private Long id;
+  private String content;
 }

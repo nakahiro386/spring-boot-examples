@@ -6,8 +6,7 @@ import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 @MybatisTest
 class MybatisDemoApplicationTest {
 
-    @Test
-    void test() {
-    }
+  @Test
+  void test() {}
 
 }

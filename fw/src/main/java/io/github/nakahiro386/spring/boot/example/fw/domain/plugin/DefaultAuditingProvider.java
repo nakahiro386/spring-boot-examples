@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class DefaultAuditingProvider implements AuditingProvider {
 
-    @Override
-    public String getCurrentAuditor() {
-        return "SYSTEM";
-    }
+  @Override
+  public String getCurrentAuditor() {
+    return "SYSTEM";
+  }
 
-    @Override
-    public Date getCurrentTimeStamp() {
-        return new Date();
-    }
+  @Override
+  public Date getCurrentTimeStamp() {
+    return new Date();
+  }
 
 }
