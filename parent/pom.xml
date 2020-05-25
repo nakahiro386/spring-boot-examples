@@ -29,6 +29,13 @@
     <mybatis-dynamic-sql.version>1.1.4</mybatis-dynamic-sql.version>
 
     <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
+
+    <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
+    <checkstyle.config.location>google_checks.xml</checkstyle.config.location>
+    <checkstyle.enable.rss>false</checkstyle.enable.rss>
+
+    <maven-surefire-report-plugin.version>3.0.0-M4</maven-surefire-report-plugin.version>
+
   </properties>
 
   <dependencyManagement>
@@ -64,6 +71,16 @@
           </configuration>
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>${maven-checkstyle-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>${maven-surefire-report-plugin.version}</version>
+        </plugin>
+        <plugin>
           <groupId>org.mybatis.generator</groupId>
           <artifactId>mybatis-generator-maven-plugin</artifactId>
           <version>${mybatis-generator-maven-plugin.version}</version>
@@ -86,7 +103,7 @@
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <reportSets>
           <reportSet>
-            <id>normal</id>
+            <id>module</id>
             <reports>
               <report>index</report>
               <report>summary</report>
@@ -97,12 +114,43 @@
             </reports>
           </reportSet>
           <reportSet>
-            <id>management</id>
+            <id>parent</id>
             <inherited>false</inherited>
             <reports>
               <report>modules</report>
               <report>dependency-management</report>
               <report>plugin-management</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>module</id>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>parent</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>checkstyle-aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>module</id>
+            <reports>
+              <report>report-only</report>
             </reports>
           </reportSet>
         </reportSets>
