@@ -1,6 +1,9 @@
 package io.github.nakahiro386.spring.boot.example.batch.configuration;
 
 import io.github.nakahiro386.spring.boot.example.batch.dto.AdAddress;
+import io.github.nakahiro386.spring.boot.example.batch.item.AdAddressHeaders;
+import io.github.nakahiro386.spring.boot.example.batch.item.AdAddressMapper;
+import io.github.nakahiro386.spring.boot.example.batch.item.file.CsvFileItemReader;
 import io.github.nakahiro386.spring.boot.example.domain.entity.Addresses;
 import io.github.nakahiro386.spring.boot.example.domain.sqlmap.AddressesMapper;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +20,6 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
-import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,18 +41,14 @@ public class ImportAdAddressConfiguration {
    * @return FlatFileItemReader
    */
   @Bean
-  public FlatFileItemReader<AdAddress> adAddressReader() {
-    return new FlatFileItemReaderBuilder<AdAddress>().name("adAddressReader")
-        .resource(new ClassPathResource("zenkoku.csv")).encoding("MS932").linesToSkip(1).delimited()
-        .names(new String[] {"id", "kenId", "cityId", "townId", "zip", "officeFlg", "deleteFlg",
-            "kenName", "kenFuri", "cityName", "cityFuri", "townName", "townFuri", "townMemo",
-            "kyotoStreet", "blockName", "blockFuri", "memo", "officeName", "officeFuri",
-            "officeAddress", "newId"})
-        .fieldSetMapper(new BeanWrapperFieldSetMapper<AdAddress>() {
-          {
-            setTargetType(AdAddress.class);
-          }
-        }).build();
+  public CsvFileItemReader<AdAddress> adAddressReader() {
+    CsvFileItemReader<AdAddress> reader = new CsvFileItemReader<>();
+    reader.setResource(new ClassPathResource("zenkoku.csv"));
+    reader.setEncoding("MS932");
+    reader.setCsvRecordMapper(new AdAddressMapper());
+    reader.setFormat(CsvFileItemReader.DEFAULT_CSV_FORMAT.withHeader(AdAddressHeaders.class)
+        .withSkipHeaderRecord());
+    return reader;
   }
 
   /**
@@ -93,7 +89,7 @@ public class ImportAdAddressConfiguration {
 
   /**
    * new deleteAddressTasklet.
-   * 
+   *
    * @return Tasklet
    */
   @Bean
@@ -103,6 +99,7 @@ public class ImportAdAddressConfiguration {
       public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext)
           throws Exception {
         int delete = addressesMapper.deleteByExample(null);
+        contribution.incrementWriteCount(delete);
         return RepeatStatus.FINISHED;
       }
 

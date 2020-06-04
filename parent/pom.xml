@@ -27,6 +27,7 @@
     <mybatis-spring-boot-starter.version>2.1.1</mybatis-spring-boot-starter.version>
     <mybatis-generator-maven-plugin.version>1.4.0</mybatis-generator-maven-plugin.version>
     <mybatis-dynamic-sql.version>1.1.4</mybatis-dynamic-sql.version>
+    <commons-csv.version>1.8</commons-csv.version>
 
     <maven-project-info-reports-plugin.version>3.0.0</maven-project-info-reports-plugin.version>
 
@@ -56,6 +57,11 @@
         <groupId>org.mybatis.dynamic-sql</groupId>
         <artifactId>mybatis-dynamic-sql</artifactId>
         <version>${mybatis-dynamic-sql.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-csv</artifactId>
+        <version>${commons-csv.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
