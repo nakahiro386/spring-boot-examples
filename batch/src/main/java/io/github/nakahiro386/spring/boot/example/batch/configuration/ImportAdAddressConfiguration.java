@@ -1,9 +1,10 @@
 package io.github.nakahiro386.spring.boot.example.batch.configuration;
 
 import io.github.nakahiro386.spring.boot.example.batch.dto.AdAddress;
-import io.github.nakahiro386.spring.boot.example.batch.item.AdAddressHeaders;
-import io.github.nakahiro386.spring.boot.example.batch.item.AdAddressMapper;
+import io.github.nakahiro386.spring.boot.example.batch.item.AddressItemProcessor;
 import io.github.nakahiro386.spring.boot.example.batch.item.file.CsvFileItemReader;
+import io.github.nakahiro386.spring.boot.example.batch.item.file.mapping.AdAddressHeaders;
+import io.github.nakahiro386.spring.boot.example.batch.item.file.mapping.AdAddressMapper;
 import io.github.nakahiro386.spring.boot.example.domain.entity.Addresses;
 import io.github.nakahiro386.spring.boot.example.domain.sqlmap.AddressesMapper;
 import lombok.RequiredArgsConstructor;
@@ -58,27 +59,7 @@ public class ImportAdAddressConfiguration {
    */
   @Bean
   public ItemProcessor<AdAddress, Addresses> addressProcessor() {
-    return new ItemProcessor<AdAddress, Addresses>() {
-
-      @Override
-      public Addresses process(AdAddress item) throws Exception {
-        // TODO toStringで桁埋める。
-        Addresses address = new Addresses().withAdAddressId(item.getId())
-            .withPrefectureCode(item.getKenId().toString())
-            .withCityCode(item.getCityId().toString()).withZipCode(item.getZip().replace("-", ""))
-            .withOfficeFlg(item.getOfficeFlg().toString())
-            .withDeleteFlg(item.getDeleteFlg().toString()).withPrefectureName(item.getKenName())
-            .withPrefectureNameKana(item.getKenFuri()).withCityName(item.getCityName())
-            .withCityNameKana(item.getCityFuri()).withTownAreaName(item.getTownName())
-            .withTownAreaNameKana(item.getTownFuri()).withTownAreaMemo(item.getTownMemo())
-            .withCityBlockName(item.getBlockName()).withCityBlockNameKana(item.getBlockFuri())
-            .withMemo(item.getMemo()).withOfficeName(item.getOfficeName())
-            .withOfficeNameKana(item.getOfficeFuri())
-            .withOfficeOfficeAddress(item.getOfficeAddress()).withNewAdAddressId(item.getNewId());
-        return address;
-      }
-    };
-
+    return new AddressItemProcessor();
   }
 
   @Bean

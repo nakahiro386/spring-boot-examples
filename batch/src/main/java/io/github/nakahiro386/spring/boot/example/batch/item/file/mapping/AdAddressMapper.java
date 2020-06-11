@@ -1,4 +1,4 @@
-package io.github.nakahiro386.spring.boot.example.batch.item;
+package io.github.nakahiro386.spring.boot.example.batch.item.file.mapping;
 
 import io.github.nakahiro386.spring.boot.example.batch.dto.AdAddress;
 import io.github.nakahiro386.spring.boot.example.batch.item.file.CsvRecordMapper;
