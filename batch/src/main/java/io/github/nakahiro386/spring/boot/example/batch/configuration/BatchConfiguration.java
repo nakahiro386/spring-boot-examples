@@ -21,7 +21,7 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
-import org.springframework.boot.autoconfigure.batch.JobLauncherCommandLineRunner;
+import org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -39,6 +39,10 @@ public class BatchConfiguration {
   /**
    * new JobLauncherCommandLineRunner.
    *
+   * <p>
+   * {@link org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration#jobLauncherApplicationRunner(JobLauncher, JobExplorer, JobRepository, BatchProperties)}
+   * </p>
+   *
    * @param jobLauncher jobLauncher
    * @param jobExplorer jobExplorer
    * @param jobRepository jobRepository
@@ -48,14 +52,11 @@ public class BatchConfiguration {
   @Bean
   // @ConditionalOnMissingBean
   // @ConditionalOnProperty(prefix = "spring.batch.job", name = "enabled", havingValue = "true",
-  // matchIfMissing =
-  // true)
-  // org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration#
-  // jobLauncherCommandLineRunner(JobLauncher, JobExplorer, JobRepository, BatchProperties)
-  public JobLauncherCommandLineRunner jobLauncherCommandLineRunner(JobLauncher jobLauncher,
+  // matchIfMissing = true)
+  public JobLauncherApplicationRunner jobLauncherApplicationRunner(JobLauncher jobLauncher,
       JobExplorer jobExplorer, JobRepository jobRepository, BatchProperties properties) {
-    JobLauncherCommandLineRunner runner =
-        new JobLauncherCommandLineRunner(jobLauncher, jobExplorer, jobRepository);
+    JobLauncherApplicationRunner runner =
+        new JobLauncherApplicationRunner(jobLauncher, jobExplorer, jobRepository);
     String jobNames = properties.getJob().getNames();
     if (StringUtils.hasText(jobNames)) {
       runner.setJobNames(jobNames);
