@@ -2,11 +2,11 @@ package io.github.nakahiro386.spring.boot.example.batch.configuration;
 
 import io.github.nakahiro386.spring.boot.example.batch.dto.AdAddress;
 import io.github.nakahiro386.spring.boot.example.batch.item.AddressItemProcessor;
-import io.github.nakahiro386.spring.boot.example.batch.item.file.CsvFileItemReader;
 import io.github.nakahiro386.spring.boot.example.batch.item.file.mapping.AdAddressHeaders;
 import io.github.nakahiro386.spring.boot.example.batch.item.file.mapping.AdAddressMapper;
 import io.github.nakahiro386.spring.boot.example.domain.entity.Addresses;
 import io.github.nakahiro386.spring.boot.example.domain.sqlmap.AddressesMapper;
+import io.github.nakahiro386.spring.boot.example.fw.batch.item.file.CsvFileItemReader;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.batch.MyBatisBatchItemWriter;

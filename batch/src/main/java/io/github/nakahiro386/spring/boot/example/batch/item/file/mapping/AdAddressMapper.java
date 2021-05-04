@@ -1,7 +1,7 @@
 package io.github.nakahiro386.spring.boot.example.batch.item.file.mapping;
 
 import io.github.nakahiro386.spring.boot.example.batch.dto.AdAddress;
-import io.github.nakahiro386.spring.boot.example.batch.item.file.CsvRecordMapper;
+import io.github.nakahiro386.spring.boot.example.fw.batch.item.file.CsvRecordMapper;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
