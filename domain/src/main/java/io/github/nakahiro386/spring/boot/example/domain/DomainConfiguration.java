@@ -2,8 +2,6 @@ package io.github.nakahiro386.spring.boot.example.domain;
 
 import io.github.nakahiro386.spring.boot.example.fw.domain.plugin.AuditingInterceptor;
 import io.github.nakahiro386.spring.boot.example.fw.domain.plugin.AuditingProvider;
-import io.github.nakahiro386.spring.boot.example.fw.domain.plugin.DefaultAuditingProvider;
-import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +10,14 @@ import org.springframework.context.annotation.Configuration;
 @MapperScan(basePackageClasses = DomainConfiguration.class)
 public class DomainConfiguration {
 
+  // @Bean
+  // AuditingProvider auditingProvider() {
+  // AuditingProvider auditingProvider = new DefaultAuditingProvider();
+  // return auditingProvider;
+  // }
+
   @Bean
-  Interceptor auditingInterceptor() {
-    AuditingProvider auditingProvider = new DefaultAuditingProvider();
+  AuditingInterceptor auditingInterceptor(AuditingProvider auditingProvider) {
     AuditingInterceptor auditingInterceptor = new AuditingInterceptor();
     auditingInterceptor.setAuditingProvider(auditingProvider);
     return auditingInterceptor;
