@@ -3,9 +3,9 @@ CREATE TABLE IF NOT EXISTS people  (
     first_name VARCHAR(20),
     last_name VARCHAR(20),
     version INTEGER NOT NULL,
-    created_by VARCHAR2(10) NOT NULL,
+    created_by VARCHAR2(255) NOT NULL,
     created_date TIMESTAMP NOT NULL,
-    last_modified_by VARCHAR2(10) NULL,
+    last_modified_by VARCHAR2(255) NULL,
     last_modified_date TIMESTAMP NULL
 );
 
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS addresses(
     office_office_address VARCHAR(255),
     new_ad_address_id INTEGER,
     version INTEGER NOT NULL,
-    created_by VARCHAR2(10) NOT NULL,
+    created_by VARCHAR2(255) NOT NULL,
     created_date TIMESTAMP NOT NULL,
-    last_modified_by VARCHAR2(10) NULL,
+    last_modified_by VARCHAR2(255) NULL,
     last_modified_date TIMESTAMP NULL
 );
