@@ -16,7 +16,7 @@
     <plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
     <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
     <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
-      <property name="suppressJavaInterface" value="false" />
+      <property name="suppressJavaInterface" value="true" />
     </plugin>
     <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin" />
     <plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin" />

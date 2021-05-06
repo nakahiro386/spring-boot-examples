@@ -1,13 +1,12 @@
 package io.github.nakahiro386.spring.boot.example.domain.entity;
 
 import io.github.nakahiro386.spring.boot.example.fw.domain.entity.AbstractAuditableEntity;
-import java.io.Serializable;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Addresses extends AbstractAuditableEntity implements Serializable {
+public class Addresses extends AbstractAuditableEntity {
     private Integer adAddressId;
 
     private String prefectureCode;
@@ -47,8 +46,6 @@ public class Addresses extends AbstractAuditableEntity implements Serializable {
     private String officeOfficeAddress;
 
     private Integer newAdAddressId;
-
-    private static final long serialVersionUID = 1L;
 
     public Integer getAdAddressId() {
         return adAddressId;
