@@ -6,7 +6,7 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.4.5</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <relativePath/><!-- lookup parent from repository -->
   </parent>
   <groupId>io.github.nakahiro386.spring.boot.example</groupId>
   <artifactId>parent</artifactId>
@@ -39,6 +39,7 @@
     <checkstyle.excludes>**/entity/**/*,**/sqlmap/**/*</checkstyle.excludes>
     <checkstyleVersion>8.32</checkstyleVersion>
 
+    <spotbugs-maven-plugin.version>4.2.3</spotbugs-maven-plugin.version>
     <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     <maven-surefire-report-plugin.version>2.22.2</maven-surefire-report-plugin.version>
 
@@ -105,6 +106,16 @@
               </exclusions>
             </dependency>
           </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>com.github.spotbugs</groupId>
+          <artifactId>spotbugs-maven-plugin</artifactId>
+          <version>${spotbugs-maven-plugin.version}</version>
+          <configuration>
+            <xmlOutput>true</xmlOutput>
+            <effort>Max</effort>
+            <threshold>Low</threshold>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.jacoco</groupId>
@@ -211,6 +222,18 @@
             <inherited>false</inherited>
             <reports>
               <report>checkstyle-aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <id>module</id>
+            <reports>
+              <report>spotbugs</report>
             </reports>
           </reportSet>
         </reportSets>

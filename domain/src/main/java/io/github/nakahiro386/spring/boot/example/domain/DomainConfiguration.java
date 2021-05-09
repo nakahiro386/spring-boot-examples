@@ -18,8 +18,7 @@ public class DomainConfiguration {
 
   @Bean
   AuditingInterceptor auditingInterceptor(AuditingProvider auditingProvider) {
-    AuditingInterceptor auditingInterceptor = new AuditingInterceptor();
-    auditingInterceptor.setAuditingProvider(auditingProvider);
+    AuditingInterceptor auditingInterceptor = new AuditingInterceptor(auditingProvider);
     return auditingInterceptor;
   }
 }

@@ -11,9 +11,6 @@ import lombok.ToString;
 @EqualsAndHashCode
 public abstract class AbstractAuditableEntity implements AuditableEntity {
 
-  /** serialVersionUID */
-  private static final long serialVersionUID = 1L;
-
   private Long id;
 
   private int version;

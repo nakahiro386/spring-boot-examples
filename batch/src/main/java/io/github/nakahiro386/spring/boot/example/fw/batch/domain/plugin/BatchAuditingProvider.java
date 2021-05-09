@@ -12,7 +12,7 @@ import org.springframework.batch.core.scope.context.StepSynchronizationManager;
 @NoArgsConstructor
 @Setter
 public class BatchAuditingProvider implements AuditingProvider {
-  public static String DEFAULT_CURRENT_AUDITOR = "BATCH";
+  public static final String DEFAULT_CURRENT_AUDITOR = "BATCH";
   private String defaultCurrentAuditor = DEFAULT_CURRENT_AUDITOR;
 
   @Override
