@@ -36,7 +36,7 @@
     <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
     <checkstyle.config.location>google_checks.xml</checkstyle.config.location>
     <checkstyle.enable.rss>false</checkstyle.enable.rss>
-    <checkstyle.excludes>**/entity/**/*,**/sqlmap/**/*</checkstyle.excludes>
+    <checkstyle.excludes>**/example/domain/entity/**/*,**/example/domain/sqlmap/**/*</checkstyle.excludes>
     <checkstyleVersion>8.32</checkstyleVersion>
 
     <spotbugs-maven-plugin.version>4.2.3</spotbugs-maven-plugin.version>
