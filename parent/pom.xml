@@ -201,7 +201,7 @@
             <inherited>false</inherited>
             <reports>
               <report>modules</report>
-              <report>dependency-management</report>
+              <!-- <report>dependency-management</report> -->
               <report>plugin-management</report>
             </reports>
           </reportSet>
