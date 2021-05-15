@@ -1,9 +1,13 @@
 package io.github.nakahiro386.spring.boot.example.batch.dto;
 
 import lombok.Data;
+import lombok.Setter;
+import org.springframework.batch.item.ItemCountAware;
 
 @Data
-public class AdAddress {
+public class AdAddress implements ItemCountAware {
+  @Setter(onMethod_ = {@Override})
+  private int itemCount;
   private Integer id;
   private Integer kenId;
   private Integer cityId;
