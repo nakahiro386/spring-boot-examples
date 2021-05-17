@@ -266,10 +266,10 @@
   </reporting>
 
   <modules>
-    <module>../fw</module>
-    <module>../domain</module>
-    <module>../web</module>
-    <module>../batch</module>
+    <module>fw</module>
+    <module>domain</module>
+    <module>web</module>
+    <module>batch</module>
   </modules>
 
 </project>
